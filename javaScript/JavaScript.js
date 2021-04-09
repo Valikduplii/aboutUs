@@ -52,7 +52,10 @@ $(document).ready(function(){
                breakpoint: 775,
                settings: {
                   variableWidth: true,
-                  slidesToShow: 3,
+                  slidesToShow: 1,
+                  variableWidth: true,
+                  centerMode: true,
+                  infinite: true,
                }
             },
          ],
