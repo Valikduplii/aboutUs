@@ -25,13 +25,6 @@ $(document).ready(function(){
             },
          ],
       });
-      // $(".news__more" || ".news__more.active").click(function () {
-      //    $(this).parents(".news__item").find(".news__text").toggleClass("active");
-      //    $(".news__more").toggleClass("active");
-      // })
-      // $(".small-img").click(function() {
-      //    $(".big-img").attr("src", $(this).attr("src"));
-      // });
    }
    if ($('.help__slider').length > 0) {
       $('.help__slider').slick({
@@ -128,13 +121,49 @@ $("#content div:first").fadeIn(); // Виводимо вміст
    }
    document.getElementById(cityName).style.display = "block";
    evt.currentTarget.className += " active";
- }
+}
 
- const q = selector => document.querySelector(selector),
- on = 'addEventListener'
+const q = selector => document.querySelector(selector),
+on = 'addEventListener'
 q('#btnPlay')[on]('click', ()=>myPlayer.play());
-
 $('#btnPlay').click(function(event){ 
-   $('#btnPlay').addClass("active");
+      var myPlayer = $("#myPlayer");
+      $('#btnPlay').addClass("active");
+      myPlayer.prop("controls", true); 
+   })
+
 })
-})
+
+const animItems = document.querySelectorAll('._anim-items');
+
+if(animItems.length > 0){
+    window.addEventListener('scroll', animOnScroll);
+    function animOnScroll(){
+        for (let index = 0; index < animItems.length; index++){
+            const animItem = animItems[index];
+            const animItemHeight = animItem.offsetHeight;
+            const animItemOffset = offset(animItem).top;
+            const animStart = 4;
+            let animItemPoint = window.innerHeight - animItemHeight / animStart;
+            if(animItemHeight > window.innerHeight) {
+               animItemPoint = window.innerHeight - window.innerHeight / animStart;
+            }
+            if((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)){
+               animItem.classList.add('_active');
+            }else{
+               if(!animItem.classList.contains('_anim-no-hide')){
+                animItem.classList.remove('_active');
+        }
+            }
+        }
+    }
+    function offset (el){
+        const rect = el.getBoundingClientRect(),
+            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+            scrollTop = window.pageXOffset || document.documentElement.scrollTop;
+        return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+    }
+    setTimeout(() => {
+        animOnScroll();
+    }, 300);
+}
