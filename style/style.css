@@ -86,6 +86,9 @@ h6 {
 section {
 	background-color: #fff;
 }
+.wrapper {
+	overflow: hidden;
+}
 main {
 	padding-top: 90px;
 	flex: 1 0 auto;
@@ -299,7 +302,11 @@ main {
 	position: absolute;
 	top: 0px;
 	right: -70px;
-	transform:translate( 0%, 0%);
+	opacity: 0;
+}
+.video__circles_01._active {
+	transition: all 2s ease 0s;
+	opacity: 100%;
 }
 .video .container {
 	position: relative;
@@ -308,7 +315,11 @@ main {
 	position: absolute;
 	bottom: -20px;
 	left: -40px;
-	transform:translate( 0%, 0%);
+	opacity: 0;
+}
+.video__circles_02._active {
+	transition: all 2s ease 0s;
+	opacity: 100%;
 }
 .video__play {	
 	position: absolute;
@@ -507,17 +518,32 @@ line-height: 130%;
 	z-index: 1;
 	top: -100px;
 	left: -300px;
+	opacity: 0%;
+}
+.achievement__circles_01._active {
+	transition: all 2s ease 0s;
+	opacity: 100%;
 }
 .achievement__circles_02 {
 	position: absolute;
 	top: 250px;
 	right: -220px;
+	opacity: 0%;
+}
+.achievement__circles_02._active {
+	transition: all 2s ease 0s;
+	opacity: 100%;
 }
 .achievement__circles_03 {
 	position: absolute;
     bottom: -275px;
     left: -240px;
 	z-index: 1;
+	opacity: 0%;
+}
+.achievement__circles_03._active {
+	transition: all 2s ease 0s;
+	opacity: 100%;
 }
 .achievement__title {
 	font-weight: bold;
@@ -800,8 +826,15 @@ text-align: center;
 	padding: 0px;	
 	position: relative;
     z-index: 2;
+	opacity: 0;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-
+.news .container._active {
+	transition: all 1s ease 0s;
+	opacity: 100%;
+}
 .news__bg {
 	background: url("../images/bgg.svg");
 	background-size: cover;
@@ -1042,6 +1075,11 @@ float: right;
 .help .container {
 	max-width: 1280px;
 	padding: 0px;
+	opacity: 0;
+}
+.help .container._active {
+	transition: all 1s ease 0s;
+	opacity: 100%;
 }
 .help__slider {
 	position: relative;
